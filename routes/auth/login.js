@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { pbkdf2Sync } from 'crypto';
 
+import { sign } from '../../jwt';
 import User from '../../models/user';
 
 const router = Router();
@@ -27,7 +28,13 @@ router.post('/', async (req, res) => {
 
   if (buf[0] === encryptPassword.toString('base64')) {
     user.password = undefined;
-    res.send(user);
+    user._id = undefined;
+    user.__v = undefined;
+    const token = sign(user);
+    if (!token) {
+      res.sendStatus(500);
+    }
+    res.send(token);
     return;
   }
 
