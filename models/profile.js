@@ -5,7 +5,7 @@ const Profile = new Schema({
   target: String,
   uploader: String,
   image: String,
-  view: Number,
+  view: { type: Number, default: 0 },
   detail: [String, String],
   timestamp: { type: Date, default: Date.now() },
 });
