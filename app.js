@@ -13,7 +13,7 @@ const app = express();
 
 app.use(cors());
 app.use(logger('dev'));
-app.use(json());
+app.use(json({ limit: '300mb' }));
 app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
 
