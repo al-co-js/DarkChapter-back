@@ -11,6 +11,7 @@ router.get('/', async (req, res) => {
     {
       page,
       limit,
+      sort: limit === '5' ? { view: -1 } : { timestamp: -1 },
     },
   );
   if (!profiles.docs) {
