@@ -12,7 +12,9 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
+  "plugins": ["simple-import-sort"],
   "rules": {
-    "no-underscore-dangle": ["error", { "allow": ["_id", "__v"] }]
+    "no-underscore-dangle": ["error", { "allow": ["_id", "__v"] }],
+    "simple-import-sort/sort": "error"
   }
 }
