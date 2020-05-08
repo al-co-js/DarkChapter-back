@@ -1,5 +1,5 @@
-import { Router } from 'express';
 import { pbkdf2Sync, randomBytes } from 'crypto';
+import { Router } from 'express';
 
 import User from '../../models/user';
 

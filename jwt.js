@@ -1,5 +1,5 @@
 import { randomBytes } from 'crypto';
-import { verify as _verify, sign as _sign } from 'jsonwebtoken';
+import { sign as _sign, verify as _verify } from 'jsonwebtoken';
 
 const secret = randomBytes(20).toString('base64');
 

@@ -1,5 +1,5 @@
-import { Router } from 'express';
 import { pbkdf2Sync } from 'crypto';
+import { Router } from 'express';
 
 import { sign } from '../../jwt';
 import User from '../../models/user';

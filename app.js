@@ -1,9 +1,9 @@
-import express, { json, urlencoded } from 'express';
 import cookieParser from 'cookie-parser';
-import logger from 'morgan';
-import { connect } from 'mongoose';
-import { config } from 'dotenv';
 import cors from 'cors';
+import { config } from 'dotenv';
+import express, { json, urlencoded } from 'express';
+import { connect } from 'mongoose';
+import logger from 'morgan';
 
 import router from './routes/index';
 
