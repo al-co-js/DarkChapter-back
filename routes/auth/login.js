@@ -33,6 +33,7 @@ router.post('/', async (req, res) => {
     const token = sign(user);
     if (!token) {
       res.sendStatus(500);
+      return;
     }
     res.send(token);
     return;
