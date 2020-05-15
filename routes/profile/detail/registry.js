@@ -1,21 +1,27 @@
 import { Router } from 'express';
 
+import { verify } from '../../../jwt';
 import ProfileDetail from '../../../models/profileDetail';
 
 const router = Router();
 
 router.post('/', (req, res) => {
   const {
-    id, uploader, image, content,
+    token, id, image, content,
   } = req.body;
-  if (!(id && uploader && image && content)) {
+  if (!(token && id && image && content)) {
     res.sendStatus(412);
     return;
   }
 
+  const verified = verify(token, true);
+  if (!verified) {
+    res.sendStatus(403);
+  }
+
   const newProfileDetail = new ProfileDetail({
     id,
-    uploader,
+    uploader: `${verified.schoolId} ${verified.name}`,
     image,
     content,
   });
