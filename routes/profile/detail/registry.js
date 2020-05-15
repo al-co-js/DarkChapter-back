@@ -5,8 +5,10 @@ import ProfileDetail from '../../../models/profileDetail';
 const router = Router();
 
 router.post('/', (req, res) => {
-  const { id, uploader, image } = req.body;
-  if (!(id && uploader && image)) {
+  const {
+    id, uploader, image, content,
+  } = req.body;
+  if (!(id && uploader && image && content)) {
     res.sendStatus(412);
     return;
   }
@@ -15,6 +17,7 @@ router.post('/', (req, res) => {
     id,
     uploader,
     image,
+    content,
   });
 
   newProfileDetail.save((err) => {
