@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "babel-node ./bin/www.js",
+    "build": "babel bin -d dist/bin && babel models -d dist/models && babel routes -d dist/routes && babel app.js -d dist && babel jwt.js -d dist",
+    "start": "node ./dist/bin/www.js",
     "dev": "nodemon --exec babel-node ./bin/www.js --watch"
   },
   "dependencies": {
