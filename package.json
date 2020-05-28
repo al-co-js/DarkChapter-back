@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "babel bin -d dist/bin && babel models -d dist/models && babel routes -d dist/routes && babel app.js -d dist && babel jwt.js -d dist",
+    "build": "babel bin -w -d dist/bin && babel models -w -d dist/models && babel routes -w -d dist/routes && babel app.js -w -d dist && babel jwt.js -w -d dist",
     "start": "node ./dist/bin/www.js",
     "dev": "nodemon --exec babel-node ./bin/www.js --watch"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
