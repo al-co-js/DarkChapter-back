@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
       return;
     }
     const hm = new Hauffman();
-    res.send(hm.compress(details));
+    res.send(hm.compress(JSON.stringify(details)));
   });
 });
 

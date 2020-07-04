@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
   }
 
   const hm = new Hauffman();
-  res.send(hm.compress(profiles.docs));
+  res.send(hm.compress(JSON.stringify(profiles.docs)));
 });
 
 export default router;
