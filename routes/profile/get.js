@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { Hauffman } from 'js-string-compression';
 
 import Profile from '../../models/profile';
 
@@ -24,7 +25,8 @@ router.get('/', async (req, res) => {
     return;
   }
 
-  res.send(profiles.docs);
+  const hm = new Hauffman();
+  res.send(hm.compress(profiles.docs));
 });
 
 export default router;

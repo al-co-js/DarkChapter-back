@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { Hauffman } from 'js-string-compression';
 
 import Profile from '../../../models/profile';
 import ProfileDetail from '../../../models/profileDetail';
@@ -24,8 +25,8 @@ router.post('/', async (req, res) => {
       res.sendStatus(500);
       return;
     }
-
-    res.send(details);
+    const hm = new Hauffman();
+    res.send(hm.compress(details));
   });
 });
 
