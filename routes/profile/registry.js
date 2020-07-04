@@ -7,7 +7,12 @@ const router = Router();
 
 router.post('/', async (req, res) => {
   const { token, target, image } = req.body;
-  if (!(token && target && image)) {
+  if (!token) {
+    res.sendStatus(403);
+    return;
+  }
+
+  if (!(target && image)) {
     res.sendStatus(412);
     return;
   }
@@ -15,6 +20,7 @@ router.post('/', async (req, res) => {
   const verified = verify(token, true);
   if (!verified) {
     res.sendStatus(403);
+    return;
   }
 
   const newProfile = new Profile({

@@ -9,7 +9,12 @@ router.post('/', (req, res) => {
   const {
     token, id, image, content,
   } = req.body;
-  if (!(token && id && image && content)) {
+  if (!token) {
+    res.sendStatus(403);
+    return;
+  }
+
+  if (!(id && image && content)) {
     res.sendStatus(412);
     return;
   }
@@ -17,6 +22,7 @@ router.post('/', (req, res) => {
   const verified = verify(token, true);
   if (!verified) {
     res.sendStatus(403);
+    return;
   }
 
   const newProfileDetail = new ProfileDetail({
